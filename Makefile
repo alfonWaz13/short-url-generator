@@ -9,3 +9,11 @@ stop:
 .PHONY: logs
 logs:
 	docker-compose logs
+
+.PHONY: makemigrations
+makemigrations:
+	python manage.py makemigrations
+
+.PHONY: migrate
+migrate:
+	python manage.py migrate
