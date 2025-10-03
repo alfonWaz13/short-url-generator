@@ -1,6 +1,7 @@
 .PHONY: start
 start:
-	docker-compose up -d
+	- docker-compose up -d
+	- make migrate
 
 .PHONY: stop
 stop:
