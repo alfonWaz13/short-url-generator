@@ -18,3 +18,7 @@ makemigrations:
 .PHONY: migrate
 migrate:
 	python manage.py migrate
+
+.PHONY: runserver
+runserver:
+	- python manage.py runserver
