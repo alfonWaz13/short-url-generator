@@ -20,11 +20,9 @@ class IndexView(View):
 
     def post(self, request, *args, **kwargs):
         long_url = request.POST.get("url_input")
-        print("Long URL received:", long_url)
         if long_url:
 
             short_url = self.create_short_url.execute(long_url=long_url)
-            print("Short URL created:", short_url)
             return render(request, self.template_name, {"short_url": short_url})
 
         return render(request, self.template_name)
