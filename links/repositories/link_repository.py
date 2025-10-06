@@ -13,4 +13,7 @@ class LinkRepository:
 
     @classmethod
     def get_existing_short_url(cls, original_url: str) -> Link | None:
-        return Link.objects.get(original_url=original_url).short_code
+        try:
+            return Link.objects.get(original_url=original_url).short_code
+        except Link.DoesNotExist:
+            return None
