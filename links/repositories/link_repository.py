@@ -10,3 +10,7 @@ class LinkRepository:
     @classmethod
     def get_all_urls(cls) -> list[Link]:
         return list(Link.objects.all().order_by("original_url"))
+
+    @classmethod
+    def get_existing_short_url(cls, original_url: str) -> Link | None:
+        return Link.objects.get(original_url=original_url).short_code
