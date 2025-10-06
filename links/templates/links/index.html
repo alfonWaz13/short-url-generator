@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short URL Generator</title>
+</head>
+<body>
+    <h1>Short URL Generator</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="url_input">Long URL:</label><br>
+        <input type="text" id="url_input" name="url_input" placeholder="https://www.google.com/" required><br><br>
+
+        <button type="submit">Make it short</button>
+    </form>
+
+    {% if short_url %}
+        <h2>Short URL generated!</h2>
+        <a href="{{ short_url }}">{{ short_url }}</a>
+    {% endif %}
+
+</body>
+</html>
