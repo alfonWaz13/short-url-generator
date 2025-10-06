@@ -26,3 +26,8 @@ runserver:
 .PHONY: format
 format:
 	- black links/
+
+.PHONY: format-check
+format-check:
+	- black --check links/
+	- flake8 links/

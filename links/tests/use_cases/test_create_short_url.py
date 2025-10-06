@@ -11,13 +11,9 @@ class TestCreateShortURL:
         url_shortener.tinyurl.short.return_value = short_url
         link_repository = MagicMock()
 
-        use_case = CreateShortURL(
-            link_repository=link_repository, url_shortener=url_shortener
-        )
+        use_case = CreateShortURL(link_repository=link_repository, url_shortener=url_shortener)
         long_url = "long_url"
         use_case.execute(long_url=long_url)
 
         url_shortener.tinyurl.short.assert_called_once_with(long_url)
-        link_repository.add_link.assert_called_once_with(
-            long_url=long_url, short_url=short_url
-        )
+        link_repository.add_link.assert_called_once_with(long_url=long_url, short_url=short_url)

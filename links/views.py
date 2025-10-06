@@ -13,16 +13,12 @@ class IndexView(View):
 
     link_repository = LinkRepository()
     url_shortener = pyshorteners.Shortener()
-    create_short_url = CreateShortURL(
-        link_repository=link_repository, url_shortener=url_shortener
-    )
+    create_short_url = CreateShortURL(link_repository=link_repository, url_shortener=url_shortener)
     get_all_urls = GetAllURLs(link_repository=link_repository)
     get_existing_url = GetExistingURL(link_repository=link_repository)
 
     def get(self, request, *args, **kwargs):
-        return render(
-            request, self.template_name, {"all_urls": self.get_all_urls.execute()}
-        )
+        return render(request, self.template_name, {"all_urls": self.get_all_urls.execute()})
 
     def post(self, request, *args, **kwargs):
         response_context = {}
@@ -30,11 +26,7 @@ class IndexView(View):
 
         if long_url:
             existing_short_url = self.get_existing_url.execute(original_url=long_url)
-            short_url = (
-                existing_short_url
-                if existing_short_url
-                else self.create_short_url.execute(long_url=long_url)
-            )
+            short_url = existing_short_url if existing_short_url else self.create_short_url.execute(long_url=long_url)
             response_context["short_url"] = short_url
 
         response_context["all_urls"] = self.get_all_urls.execute()

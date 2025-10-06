@@ -4,9 +4,7 @@ from links.repositories.link_repository import LinkRepository
 
 
 class CreateShortURL:
-    def __init__(
-        self, link_repository: LinkRepository, url_shortener: pyshorteners.Shortener
-    ) -> None:
+    def __init__(self, link_repository: LinkRepository, url_shortener: pyshorteners.Shortener) -> None:
         self.link_repository = link_repository
         self.url_shortener = url_shortener
 

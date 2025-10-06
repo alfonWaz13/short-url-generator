@@ -44,9 +44,7 @@ class TestIndexView(SimpleTestCase):
 
         self.view.post(request)
 
-        self.view.create_short_url.execute.assert_called_once_with(
-            long_url="http://new-url.com"
-        )
+        self.view.create_short_url.execute.assert_called_once_with(long_url="http://new-url.com")
 
     def test_no_new_url_is_added_if_url_already_exists(self):
         request = MagicMock()
