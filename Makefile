@@ -22,3 +22,7 @@ migrate:
 .PHONY: runserver
 runserver:
 	- python manage.py runserver
+
+.PHONY: format
+format:
+	- black links/

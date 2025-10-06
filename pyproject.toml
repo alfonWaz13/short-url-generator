@@ -11,3 +11,6 @@ dependencies = [
     "pytest>=8.4.2",
     "pytest-django>=4.11.1",
 ]
+
+[tool.black]
+exclude = 'migrations'
