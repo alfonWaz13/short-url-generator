@@ -1,12 +1,11 @@
-import json
 from unittest.mock import MagicMock
 
-from django.test import TestCase
+from django.test import SimpleTestCase
 
 from links.views import IndexView
 
 
-class TestIndexView(TestCase):
+class TestIndexView(SimpleTestCase):
 
     def setUp(self):
         self.view = IndexView()
