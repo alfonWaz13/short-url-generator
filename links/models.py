@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Link(models.Model):
     original_url = models.URLField(unique=True)
     short_code = models.URLField()

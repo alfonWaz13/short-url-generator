@@ -7,25 +7,24 @@ from links.use_cases.create_short_url import CreateShortURL
 
 
 class IndexView(View):
-    template_name = 'links/index.html'
+    template_name = "links/index.html"
 
     link_repository = LinkRepository()
     url_shortener = pyshorteners.Shortener()
     create_short_url = CreateShortURL(
-        link_repository=link_repository,
-        url_shortener=url_shortener
+        link_repository=link_repository, url_shortener=url_shortener
     )
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        long_url = request.POST.get('url_input')
+        long_url = request.POST.get("url_input")
         print("Long URL received:", long_url)
         if long_url:
 
             short_url = self.create_short_url.execute(long_url=long_url)
             print("Short URL created:", short_url)
-            return render(request, self.template_name, {'short_url': short_url})
+            return render(request, self.template_name, {"short_url": short_url})
 
         return render(request, self.template_name)
