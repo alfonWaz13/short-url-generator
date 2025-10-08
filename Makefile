@@ -1,6 +1,7 @@
 .PHONY: start
 start:
 	- docker-compose up -d
+	- sleep 2
 	- make migrate
 
 .PHONY: stop
@@ -21,11 +22,12 @@ migrate:
 
 .PHONY: runserver
 runserver:
+	- make start
 	- python manage.py runserver
 
 .PHONY: format
 format:
-	- black links/
+	black links/
 
 .PHONY: format-check
 format-check:
