@@ -1,8 +1,14 @@
-.PHONY: start
-start:
+.PHONY: run-local
+run-local:
 	- docker-compose up -d
 	- sleep 2
 	- make migrate
+	- python manage.py runserver
+
+.PHONY: run-production
+run-production:
+	- make migrate
+	- gunicorn --workers 3 --bind 0.0.0.0:8000 url_shortener.wsgi:application
 
 .PHONY: stop
 stop:
@@ -19,11 +25,6 @@ makemigrations:
 .PHONY: migrate
 migrate:
 	python manage.py migrate
-
-.PHONY: runserver
-runserver:
-	- make start
-	- python manage.py runserver
 
 .PHONY: format
 format:
