@@ -8,4 +8,6 @@ export DB_PORT=$(aws ssm get-parameter --name "/django-short-url-generator/DB_PO
 
 cd /home/ubuntu/short-url-generator
 source .venv/bin/activate
+git switch main
+git pull
 exec make run-production
