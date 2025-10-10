@@ -10,4 +10,5 @@ cd /home/ubuntu/short-url-generator
 source .venv/bin/activate
 git switch main
 git pull
+uv sync
 exec make run-production
