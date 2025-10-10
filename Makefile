@@ -1,6 +1,6 @@
 .PHONY: run-local
 run-local:
-	- docker-compose up -d
+	- make run-local-db
 	- sleep 2
 	- make migrate
 	- python manage.py runserver
@@ -13,6 +13,10 @@ run-production:
 .PHONY: stop
 stop:
 	docker-compose down
+
+.PHONY: run-local-db
+run-local-db:
+	docker-compose up -d
 
 .PHONY: logs
 logs:

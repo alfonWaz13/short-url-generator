@@ -29,13 +29,25 @@ This repository is a **learning playground** for:
 2. **Install dependencies**
    ```bash
    uv sync
+   source .venv/bin/activate
    ```
-3. **Run locally**
+3. **Run project**
+    - **Run locally with django runserver**:
+   
+    This will start a containerized environment using Docker Compose with the database and will apply the migrations.
    ```bash
-   make start
-   make runserver
+   make run-local
    ```
-4. **Explore and learn!**
+   - **Run locally with gunicorn**:
+   
+   This command is designed to run in a production-like environment using Gunicorn as the application server. It assumes that you have a PostgreSQL database running and accessible with the specified environment variables, but it can be run also locally. In order to make it work, you need to run the database first using:
+   ```bash
+    make run-local-db
+    ```
+    After that, you can run the Gunicorn application server using:
+    ```bash
+    make run-production
+    ```
 
 ## 🛠️ Tech Stack
 
